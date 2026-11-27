@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#070b18">
+  <meta name="description" content="Play Whack-a-Mole in your browser. Tap moles, dodge bombs and beat the 30-second clock.">
+  <title>Whack-a-Mole · PixelPlay</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🕹️</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/game.css">
+</head>
+<body class="game-page">
+  <header class="game-top">
+    <a class="icon-btn back-btn" href="../arcade.html" aria-label="Back to all games">←</a>
+    <div class="game-heading">
+      <h1>🔨 Whack-a-Mole</h1>
+      <p>Thirty seconds of bonking</p>
+    </div>
+    <div class="game-actions">
+      <span class="best-pill">🏆 <b data-best="whack">0</b></span>
+      <button class="icon-btn" data-sound-toggle aria-label="Mute sound" title="Mute sound">🔊</button>
+    </div>
+  </header>
+
+  <main class="game-main">
+    <section class="stage padded" id="stage" style="--stage-w:470px;--ar:1;--g1:#84cc16;--g2:#22c55e">
+    <div class="whack-grid" id="whackGrid" aria-label="Whack-a-mole holes"></div>
+    <div class="veil" id="overlay">
+      <div class="veil-card">
+        <div class="veil-icon" id="ovIcon">🔨</div>
+        <h2 id="ovTitle">Whack-a-Mole</h2>
+        <p id="ovText">You have <b>30 seconds</b>. Tap the moles for <b>+10</b>.<br>Careful — bombs cost you <b>−15</b>.</p>
+        <button class="btn primary" id="ovBtn">Start</button>
+      </div>
+    </div>
+    </section>
+
+    <div class="hud">
+      <div class="hud-chip">Score <b id="score">0</b></div>
+      <div class="hud-chip">Time <b id="time">30</b></div>
+      <div class="hud-chip">Best <b id="best" data-best="whack">0</b></div>
+    </div>
+
+    <p class="hint">Tap or click the moles as fast as you can. Bombs are not your friends.</p>
+  </main>
+
+  <script src="../js/common.js"></script>
+  <script src="../js/games/whack.js"></script>
+</body>
+</html>

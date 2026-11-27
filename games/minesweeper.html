@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#070b18">
+  <meta name="description" content="Play Minesweeper in your browser with touch-friendly flag mode and saved best times.">
+  <title>Minesweeper · PixelPlay</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🕹️</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/game.css">
+</head>
+<body class="game-page">
+  <header class="game-top">
+    <a class="icon-btn back-btn" href="../arcade.html" aria-label="Back to all games">←</a>
+    <div class="game-heading">
+      <h1>💣 Minesweeper</h1>
+      <p>Clear the field without a bang</p>
+    </div>
+    <div class="game-actions">
+      <span class="best-pill">🏆 <b data-best="minesweeper" data-best-mode="low" data-best-suffix="s">0</b></span>
+      <button class="icon-btn" data-sound-toggle aria-label="Mute sound" title="Mute sound">🔊</button>
+    </div>
+  </header>
+
+  <main class="game-main">
+    <section class="stage padded" id="stage" style="--stage-w:460px;--ar:1;--g1:#f43f5e;--g2:#fb7185">
+    <div class="ms-grid" id="msGrid" aria-label="Minesweeper board"></div>
+    <div class="veil hidden" id="overlay">
+      <div class="veil-card">
+        <div class="veil-icon" id="ovIcon">🎉</div>
+        <h2 id="ovTitle">Field cleared!</h2>
+        <p id="ovText">You swept the field.</p>
+        <button class="btn primary" id="ovBtn">Play again</button>
+      </div>
+    </div>
+    </section>
+
+    <div class="hud">
+      <div class="hud-chip">Mines <b id="minesLeft">10</b></div>
+      <div class="hud-chip">Time <b id="time">0:00</b></div>
+      <div class="hud-chip">Best <b data-best="minesweeper" data-best-mode="low" data-best-suffix="s">—</b></div>
+      <button class="hud-chip" id="flagBtn">🚩 Flag: off</button>
+      <button class="hud-chip" id="newBtn">↻ New game</button>
+    </div>
+
+    <p class="hint">Tap a cell to reveal it. Turn on Flag mode (or right-click) to mark mines. The first tap is always safe.</p>
+  </main>
+
+  <script src="../js/common.js"></script>
+  <script src="../js/games/minesweeper.js"></script>
+</body>
+</html>

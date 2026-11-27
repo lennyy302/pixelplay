@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kopfrechentrainer</title>
+<link rel="icon" href="data:,">
+<style>
+  html, body { margin: 0; padding: 0; background: #fff; color: #000;
+    font-family: Arial, Helvetica, sans-serif; font-weight: bold; }
+  h1 { text-align: center; font-size: 20px; margin: 56px 0 14px; }
+  .intro { text-align: center; font-size: 12px; line-height: 14px; margin: 0 8px 12px; }
+  .intro .r { color: #f00; }
+  .wrapper { width: 750px; max-width: 100%; margin: 0 auto; display: flex;
+    border: 1px solid #000; box-sizing: border-box; }
+  .left { flex: 0 0 497px; background: #ccc; border-right: 1px solid #000;
+    min-height: 358px; position: relative; box-sizing: border-box; }
+  .right { flex: 1; min-width: 0; }
+  .box { padding: 0 0 2px; font-size: 12px; }
+  .box h2 { margin: 0; padding: 2px 0 3px; text-align: center; font-size: 14px; }
+  .box label { display: flex; align-items: center; height: 23px; font-size: 12px; cursor: pointer; }
+  .box input[type=radio] { margin: 0 14px 0 6px; }
+  .yellow { background: #ff0; }
+  .blue { background: #99f; border-top: 1px solid #000; }
+  .green { background: #0f0; border-top: 1px solid #000; }
+  .copy { background: #ff0; border-top: 1px solid #000; text-align: center;
+    font-size: 14px; padding: 3px 0 4px; }
+  .row { position: absolute; left: 0; right: 0; text-align: center; font-size: 14px; }
+  .cell { display: inline-block; background: #ff0; border: 2px solid #999; border-color: #aaa #777 #777 #aaa;
+    height: 18px; line-height: 18px; text-align: center; font-size: 14px;
+    box-sizing: content-box; vertical-align: middle; }
+  .cell.g { background: #0f0; }
+  .num { width: 46px; }
+  .op { width: 14px; }
+  .nr { width: 36px; background: #fff; border: 2px solid #999; border-color: #777 #aaa #aaa #777;
+    display: inline-block; height: 16px; line-height: 16px; font-size: 14px; vertical-align: middle; }
+  input.text { font: bold 14px Arial, Helvetica, sans-serif; text-align: center;
+    border: 2px solid #999; border-color: #777 #aaa #aaa #777; padding: 0 2px; outline: none; }
+  #sol { width: 183px; height: 16px; background: #fff; text-align: left; }
+  .count { width: 54px; height: 16px; background: #fff; border-color: #777 #aaa #aaa #777; }
+  button.gbtn { font: bold 14px Arial, Helvetica, sans-serif; background: #0f0;
+    border: 2px solid #777; border-color: #ccc #555 #555 #ccc; padding: 0 5px; height: 22px;
+    cursor: pointer; vertical-align: middle; }
+  #fb  { width: 100px; }
+  #gr  { width: 42px; cursor: text; }
+  @media (max-width: 760px) {
+    .wrapper { flex-direction: column; }
+    .left { flex: none; width: 100%; border-right: 0; border-bottom: 1px solid #000; }
+  }
+</style>
+</head>
+<body>
+
+<h1>Kopfrechentrainer</h1>
+<div class="intro">
+  Wähle zuerst die <span class="r">Zahlenmenge</span>, die <span class="r">Aufgabenart</span> und die Art der <span class="r">Aufgabenstellung</span>.<br>
+  Wird die Eingabe der Lösung durch ENTER abgeschlossen, erfolgt die Bewertung der Lösung.<br>
+  Durch erneutes ENTER wird die nächste Aufgabe gestellt.
+</div>
+
+<div class="wrapper">
+  <div class="left">
+    <div class="row" style="top:87px">
+      <span class="nr" id="nr" style="width:34px;background:#fff;border:2px solid #999;border-color:#777 #aaa #aaa #777">1.</span><span> Aufgabe</span>
+    </div>
+
+    <div class="row" style="top:121px">
+      <span class="cell num" id="a" style="width:42px"></span>
+      <span class="cell op" id="op"></span>
+      <span class="cell num" id="b" style="width:44px"></span>
+      <span class="cell op" id="eq">=</span>
+      <input class="text cell g" id="gr" type="text" autocomplete="off" inputmode="text" aria-label="Ergebnis">
+      <span class="cell num" id="fb" style="width:104px"></span>
+    </div>
+
+    <div class="row" style="top:165px">
+      Lösung:
+      <input class="text" id="sol" type="text" autocomplete="off" autofocus>
+      <button class="gbtn" id="next" type="button">Nächste Aufgabe</button>
+    </div>
+
+    <div class="row" style="top:203px">
+      Richtig: <input class="text count" id="ok" value="0" readonly>
+      &nbsp;&nbsp;&nbsp;Falsch: <input class="text count" id="bad" value="0" readonly>
+    </div>
+
+    <div class="row" style="top:231px">
+      <button class="gbtn" id="restart" type="button" style="height:20px">Neustart</button>
+    </div>
+  </div>
+
+  <div class="right">
+    <div class="box yellow">
+      <h2>Zahlenmenge</h2>
+      <label><input type="radio" name="zm" value="pos"> positive Zahlen</label>
+      <label><input type="radio" name="zm" value="int" checked> positive und negative Zahlen</label>
+      <label><input type="radio" name="zm" value="dec"> Dezimalzahlen</label>
+    </div>
+    <div class="box blue">
+      <h2>Rechenart</h2>
+      <label><input type="radio" name="ra" value="+"> Addition</label>
+      <label><input type="radio" name="ra" value="-"> Subtraktion</label>
+      <label><input type="radio" name="ra" value="+-"> Addition/Subtraktion</label>
+      <label><input type="radio" name="ra" value="*"> Multiplikation</label>
+      <label><input type="radio" name="ra" value="/"> Division</label>
+      <label><input type="radio" name="ra" value="*/"> Multiplikation/Division</label>
+      <label><input type="radio" name="ra" value="all" checked> Alle Rechenarten</label>
+    </div>
+    <div class="box green">
+      <h2>Aufgabenstellung</h2>
+      <label><input type="radio" name="as" value="std" checked> Standardaufgabenstellung</label>
+      <label><input type="radio" name="as" value="var"> variable Aufgabenstellung</label>
+    </div>
+    <div class="copy">&copy; F. Cordes 2014</div>
+  </div>
+</div>
+
+<script>
+(function () {
+  // Secret code: type this into the green field (or the Lösung field) to enter the arcade.
+  var SECRET = "6969";
+  var TARGET = "arcade.html";
+
+  var $ = function (id) { return document.getElementById(id); };
+  var elA = $("a"), elB = $("b"), elOp = $("op"), elNr = $("nr"),
+      gr = $("gr"), fb = $("fb"), sol = $("sol"),
+      ok = $("ok"), bad = $("bad");
+  var state = { n: 1, result: 0, answered: false, right: 0, wrong: 0 };
+
+  function radio(name) {
+    var r = document.querySelector('input[name="' + name + '"]:checked');
+    return r ? r.value : null;
+  }
+  function rnd(lo, hi) { return Math.floor(Math.random() * (hi - lo + 1)) + lo; }
+  function pick(s) { return s[rnd(0, s.length - 1)]; }
+  function fmt(x, dec) {
+    var s = dec ? String(x).replace(".", ",") : String(x);
+    return x < 0 ? "(" + s + ")" : s;
+  }
+  function round1(x) { return Math.round(x * 10) / 10; }
+
+  function newTask() {
+    var zm = radio("zm"), ra = radio("ra");
+    var ops = ra === "all" ? "+-*/" : ra;
+    var op = pick(ops);
+    var dec = zm === "dec", neg = zm === "int";
+    var a, b, res;
+
+    function sgn(v) { return neg && Math.random() < 0.5 ? -v : v; }
+
+    if (op === "+" || op === "-") {
+      a = sgn(rnd(2, 99)); b = sgn(rnd(2, 99));
+      if (dec) { a = round1(rnd(11, 999) / 10); b = round1(rnd(11, 999) / 10); }
+      res = op === "+" ? a + b : a - b;
+    } else if (op === "*") {
+      a = sgn(rnd(2, 99)); b = sgn(rnd(2, 12));
+      if (dec) { a = round1(rnd(11, 199) / 10); b = rnd(2, 9); }
+      res = a * b;
+    } else {
+      b = sgn(rnd(2, 12));
+      var q = sgn(rnd(2, 40));
+      if (dec) { b = rnd(2, 9); q = round1(rnd(11, 199) / 10); }
+      a = round1(q * b); res = q;
+    }
+    res = round1(res);
+    state.result = res;
+    state.answered = false;
+    elA.textContent = fmt(a, dec);
+    elB.textContent = fmt(b, dec);
+    elOp.textContent = op;
+    elNr.textContent = state.n + ".";
+    gr.value = ""; fb.textContent = ""; fb.style.background = "#ff0";
+    sol.value = ""; sol.readOnly = false;
+    sol.focus();
+  }
+
+  function parse(v) {
+    v = String(v).trim().replace(",", ".");
+    if (v === "" || isNaN(Number(v))) return null;
+    return Number(v);
+  }
+
+  function evaluate() {
+    var v = parse(sol.value);
+    if (v === null) return;
+    state.answered = true;
+    sol.readOnly = true;
+    var shown = String(state.result).replace(".", ",");
+    gr.value = shown;
+    if (Math.abs(v - state.result) < 1e-9) {
+      state.right++; ok.value = state.right;
+      fb.textContent = "richtig"; fb.style.background = "#0f0";
+    } else {
+      state.wrong++; bad.value = state.wrong;
+      fb.textContent = "falsch"; fb.style.background = "#f55";
+    }
+  }
+
+  function advance() { state.n++; newTask(); }
+
+  function secretCheck(el) {
+    if (el.value.trim() === SECRET) { window.location.href = TARGET; }
+  }
+
+  // Secret code detection (fires as soon as it's typed, no Enter needed)
+  gr.addEventListener("input", function () { secretCheck(gr); });
+  sol.addEventListener("input", function () { secretCheck(sol); });
+
+  // Enter flow: first Enter grades, second Enter loads the next task
+  sol.addEventListener("keydown", function (e) {
+    if (e.key !== "Enter") return;
+    e.preventDefault();
+    state.answered ? advance() : evaluate();
+  });
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Enter" && state.answered && document.activeElement !== sol) advance();
+  });
+
+  $("next").addEventListener("click", advance);
+  $("restart").addEventListener("click", function () {
+    state.n = 1; state.right = 0; state.wrong = 0; ok.value = 0; bad.value = 0; newTask();
+  });
+  Array.prototype.forEach.call(document.querySelectorAll('input[type=radio]'), function (r) {
+    r.addEventListener("change", function () {
+      state.n = 1; state.right = 0; state.wrong = 0; ok.value = 0; bad.value = 0; newTask();
+    });
+  });
+
+  newTask();
+})();
+</script>
+</body>
+</html>

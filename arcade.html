@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#070b18">
+  <meta name="description" content="PixelPlay is a tiny browser arcade with twelve free games. No downloads, no accounts — just tap, swipe and play on phone, tablet or computer.">
+  <title>PixelPlay · A tiny browser arcade</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🕹️</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap nav">
+      <a class="logo" href="arcade.html" aria-label="PixelPlay home">
+        <span class="logo-mark">🕹️</span>
+        <span>Pixel<em>Play</em></span>
+      </a>
+      <span class="nav-spacer"></span>
+      <a class="nav-link" href="#games">Games</a>
+      <a class="nav-link" href="#about">About</a>
+      <button class="icon-btn" data-sound-toggle aria-label="Mute sound" title="Mute sound">🔊</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero wrap">
+      <span class="eyebrow"><span class="dot"></span> 12 free browser games</span>
+      <h1>A tiny arcade for<br><span class="gradient-text">every screen.</span></h1>
+      <p class="hero-sub">
+        Twelve hand-built games that run right in your browser.
+        <strong>No downloads, no accounts</strong> — just tap, swipe and play.
+      </p>
+
+      <div class="hero-actions">
+        <div class="search-box">
+          <span class="search-icon">🔍</span>
+          <input id="search" type="search" placeholder="Search games…" autocomplete="off" aria-label="Search games">
+          <kbd>/</kbd>
+        </div>
+        <button class="random-btn" id="randomBtn">🎲 Surprise me</button>
+      </div>
+
+      <div class="hero-meta">
+        <span>📱 Touch friendly</span>
+        <span>⚡ Instant play</span>
+        <span>🏆 Scores saved</span>
+      </div>
+    </section>
+
+    <div class="wrap">
+      <div class="filters" role="group" aria-label="Filter games by category">
+        <button class="chip active" data-cat="all">All</button>
+        <button class="chip" data-cat="arcade">Arcade</button>
+        <button class="chip" data-cat="puzzle">Puzzle</button>
+        <button class="chip" data-cat="action">Action</button>
+        <button class="chip" data-cat="classic">Classic</button>
+        <button class="chip" data-cat="brain">Brain</button>
+      </div>
+    </div>
+
+    <section class="games-section wrap" id="games">
+      <div class="section-head">
+        <div>
+          <h2>All games</h2>
+          <p>Pick a game and jump straight in.</p>
+        </div>
+        <span class="game-count" id="gameCount">12 games</span>
+      </div>
+
+      <div class="cards" id="cards">
+        <a class="card" href="games/snake.html" data-cat="arcade" data-search="snake eat grow classic arcade neon" style="--g1:#22c55e;--g2:#a3e635">
+          <div class="card-top">
+            <div class="card-icon">🐍</div>
+            <span class="card-tag">Arcade</span>
+          </div>
+          <div>
+            <h3>Snake</h3>
+            <p>Eat, grow, and don't bite yourself.</p>
+          </div>
+          <div class="card-foot">
+            <span class="best">Best <b data-best="snake">0</b></span>
+            <span class="play">Play <span>→</span></span>
+          </div>
+        </a>
+
+        <a class="card" href="games/tetris.html" data-cat="puzzle" data-search="tetris blocks stack lines puzzle classic" style="--g1:#8b5cf6;--g2:#6366f1">
+          <div class="card-top">
+            <div class="card-icon">🧱</div>
+            <span class="card-tag">Puzzle</span>
+          </div>
+          <div>
+            <h3>Tetris</h3>
+            <p>Stack the blocks. Clear the lines.</p>
+          </div>
+          <div class="card-foot">
+            <span class="best">Best <b data-best="tetris">0</b></span>
+            <span class="play">Play <span>→</span></span>
+          </div>
+        </a>
+
+        <a class="card" href="games/breakout.html" data-cat="arcade" data-search="breakout bricks paddle ball smash arcade" style="--g1:#f97316;--g2:#fbbf24">
+          <div class="card-top">
+            <div class="card-icon">🧨</div>
+            <span class="card-tag">Arcade</span>
+          </div>
+          <div>
+            <h3>Breakout</h3>
+            <p>Bounce, smash and clear every brick.</p>
+          </div>
+          <div class="card-foot">
+            <span class="best">Best <b data-best="breakout">0</b></span>
+            <span class="play">Play <span>→</span></span>
+          </div>
+        </a>
+
+        <a class="card" href="games/flappy.html" data-cat="action" data-search="flappy bird pipes fly tap action" style="--g1:#38bdf8;--g2:#22d3ee">
+          <div class="card-top">
+            <div class="card-icon">🐤</div>
+            <span class="card-tag">Action</span>
+          </div>
+          <div>
+            <h3>Flappy</h3>
+            <p>One tap to fly. Don't hit the pipes.</p>
+          </div>
+          <div class="card-foot">
+            <span class="best">Best <b data-best="flappy">0</b></span>
+            <span class="play">Play <span>→</span></span>
+          </div>
+        </a>
+
+        <a class="card" href="games/2048.html" data-cat="puzzle" data-search="2048 merge numbers tiles puzzle" style="--g1:#fb7185;--g2:#f472b6">
+          <div class="card-top">
+            <div class="card-icon">🔢</div>
+            <span class="card-tag">Puzzle</span>
+          </div>
+          <div>
+            <h3>2048</h3>
+            <p>Slide, merge and build the magic tile.</p>
+          </div>
+          <div class="card-foot">
+            <span class="best">Best <b data-best="2048">0</b></span>
+            <span class="play">Play <span>→</span></span>
+          </div>
+        </a>
+
+        <a class="card" href="games/memory.html" data-cat="brain" data-search="memory match pairs cards brain emoji" style="--g1:#a78bfa;--g2:#f0abfc">
+          <div class="card-top">
+            <div class="card-icon">🧠</div>
+            <span class="card-tag">Brain</span>
+          </div>
+          <div>
+            <h3>Memory</h3>
+            <p>Flip the cards and find every pair.</p>
+          </div>
+          <div class="card-foot">
+            <span class="best">Best <b data-best="memory" data-best-mode="low" data-best-suffix="s">—</b></span>
+            <span class="play">Play <span>→</span></span>
+          </div>
+        </a>
+
+        <a class="card" href="games/minesweeper.html" data-cat="puzzle" data-search="minesweeper mines flags puzzle logic" style="--g1:#f43f5e;--g2:#fb7185">
+          <div class="card-top">
+            <div class="card-icon">💣</div>
+            <span class="card-tag">Puzzle</span>
+          </div>
+          <div>
+            <h3>Minesweeper</h3>
+            <p>Clear the field without a bang.</p>
+          </div>
+          <div class="card-foot">
+            <span class="best">Best <b data-best="minesweeper" data-best-mode="low" data-best-suffix="s">—</b></span>
+            <span class="play">Play <span>→</span></span>
+          </div>
+        </a>
+
+        <a class="card" href="games/pong.html" data-cat="classic" data-search="pong paddle ball cpu classic" style="--g1:#14b8a6;--g2:#22d3ee">
+          <div class="card-top">
+            <div class="card-icon">🏓</div>
+            <span class="card-tag">Classic</span>
+          </div>
+          <div>
+            <h3>Pong</h3>
+            <p>Out-rally the CPU. First to seven wins.</p>
+          </div>
+          <div class="card-foot">
+            <span class="best">Rally <b data-best="pong">0</b></span>
+            <span class="play">Play <span>→</span></span>
+          </div>
+        </a>
+
+        <a class="card" href="games/invaders.html" data-cat="action" data-search="space invaders aliens shoot arcade action" style="--g1:#a855f7;--g2:#ec4899">
+          <div class="card-top">
+            <div class="card-icon">👾</div>
+            <span class="card-tag">Action</span>
+          </div>
+          <div>
+            <h3>Invaders</h3>
+            <p>Hold the line. Save the planet.</p>
+          </div>
+          <div class="card-foot">
+            <span class="best">Best <b data-best="invaders">0</b></span>
+            <span class="play">Play <span>→</span></span>
+          </div>
+        </a>
+
+        <a class="card" href="games/tictactoe.html" data-cat="classic" data-search="tic tac toe noughts crosses ai classic" style="--g1:#f59e0b;--g2:#fbbf24">
+          <div class="card-top">
+            <div class="card-icon">⭕</div>
+            <span class="card-tag">Classic</span>
+          </div>
+          <div>
+            <h3>Tic-Tac-Toe</h3>
+            <p>Try to outsmart an unbeatable AI.</p>
+          </div>
+          <div class="card-foot">
+            <span class="best">Wins <b data-best="tictactoe">0</b></span>
+            <span class="play">Play <span>→</span></span>
+          </div>
+        </a>
+
+        <a class="card" href="games/whack.html" data-cat="action" data-search="whack a mole hammer bonk timer action" style="--g1:#84cc16;--g2:#22c55e">
+          <div class="card-top">
+            <div class="card-icon">🔨</div>
+            <span class="card-tag">Action</span>
+          </div>
+          <div>
+            <h3>Whack-a-Mole</h3>
+            <p>Thirty seconds. As many bonks as you can.</p>
+          </div>
+          <div class="card-foot">
+            <span class="best">Best <b data-best="whack">0</b></span>
+            <span class="play">Play <span>→</span></span>
+          </div>
+        </a>
+
+        <a class="card" href="games/simon.html" data-cat="brain" data-search="simon says sequence memory colors brain" style="--g1:#06b6d4;--g2:#3b82f6">
+          <div class="card-top">
+            <div class="card-icon">🎵</div>
+            <span class="card-tag">Brain</span>
+          </div>
+          <div>
+            <h3>Simon</h3>
+            <p>Watch the colours. Repeat the sequence.</p>
+          </div>
+          <div class="card-foot">
+            <span class="best">Best <b data-best="simon">0</b></span>
+            <span class="play">Play <span>→</span></span>
+          </div>
+        </a>
+      </div>
+
+      <div class="empty-state" id="emptyState">
+        <div class="big">🕹️</div>
+        <h3>No games found</h3>
+        <p>Try a different search or category.</p>
+        <button class="btn primary" id="resetFilters" style="margin-top:14px">Show all games</button>
+      </div>
+    </section>
+
+    <section class="features wrap" id="about">
+      <div class="feature">
+        <div class="feature-icon">📱</div>
+        <div>
+          <h3>Made for touch</h3>
+          <p>Swipe, tap and on-screen controls on phones and iPad. Keyboard and mouse on desktop.</p>
+        </div>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">🏆</div>
+        <div>
+          <h3>Scores that stick</h3>
+          <p>Your best runs are saved on your own device. No account, no cloud, no fuss.</p>
+        </div>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">⚡</div>
+        <div>
+          <h3>Zero setup</h3>
+          <p>Pure HTML, CSS and JavaScript. Drop it on GitHub Pages and it just works.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <a class="logo" href="arcade.html">
+        <span class="logo-mark">🕹️</span>
+        <span>Pixel<em>Play</em></span>
+      </a>
+      <span>Built for GitHub Pages. No accounts, no tracking, no nonsense.</span>
+      <div class="footer-links">
+        <a href="#games">All games</a>
+        <a href="#">Top ↑</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/common.js"></script>
+  <script src="js/site.js"></script>
+</body>
+</html>

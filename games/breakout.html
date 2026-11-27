@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#070b18">
+  <meta name="description" content="Play Breakout in your browser. Drag the paddle, smash bricks and climb the levels.">
+  <title>Breakout · PixelPlay</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🕹️</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/game.css">
+</head>
+<body class="game-page">
+  <header class="game-top">
+    <a class="icon-btn back-btn" href="../arcade.html" aria-label="Back to all games">←</a>
+    <div class="game-heading">
+      <h1>🧨 Breakout</h1>
+      <p>Smash every brick</p>
+    </div>
+    <div class="game-actions">
+      <span class="best-pill">🏆 <b data-best="breakout">0</b></span>
+      <button class="icon-btn" data-sound-toggle aria-label="Mute sound" title="Mute sound">🔊</button>
+    </div>
+  </header>
+
+  <main class="game-main">
+    <section class="stage " id="stage" style="--stage-w:480px;--ar:0.8;--g1:#f97316;--g2:#fbbf24">
+    <canvas id="game" width="480" height="600" aria-label="Breakout board"></canvas>
+    <div class="veil" id="overlay">
+      <div class="veil-card">
+        <div class="veil-icon" id="ovIcon">🧨</div>
+        <h2 id="ovTitle">Breakout</h2>
+        <p id="ovText">Drag to move the paddle. Tap or press <b>Space</b> to launch.<br>Clear every brick to level up.</p>
+        <button class="btn primary" id="ovBtn">Play</button>
+      </div>
+    </div>
+    </section>
+
+    <div class="hud">
+      <div class="hud-chip">Score <b id="score">0</b></div>
+      <div class="hud-chip heart">Lives <b id="lives">♥♥♥</b></div>
+      <div class="hud-chip">Level <b id="level">1</b></div>
+      <div class="hud-chip">Best <b id="best" data-best="breakout">0</b></div>
+      <button class="hud-chip" id="pauseBtn">⏸ Pause</button>
+    </div>
+
+    <p class="hint">Drag anywhere on the board to move. <kbd>←</kbd><kbd>→</kbd> also work, <kbd>Space</kbd> launches, <kbd>P</kbd> pauses.</p>
+  </main>
+
+  <script src="../js/common.js"></script>
+  <script src="../js/games/breakout.js"></script>
+</body>
+</html>

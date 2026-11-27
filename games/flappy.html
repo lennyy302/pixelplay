@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#070b18">
+  <meta name="description" content="Play a Flappy-style tap game in your browser. Thread the pipes and beat your best score.">
+  <title>Flappy · PixelPlay</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🕹️</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/game.css">
+</head>
+<body class="game-page">
+  <header class="game-top">
+    <a class="icon-btn back-btn" href="../arcade.html" aria-label="Back to all games">←</a>
+    <div class="game-heading">
+      <h1>🐤 Flappy</h1>
+      <p>One tap to fly</p>
+    </div>
+    <div class="game-actions">
+      <span class="best-pill">🏆 <b data-best="flappy">0</b></span>
+      <button class="icon-btn" data-sound-toggle aria-label="Mute sound" title="Mute sound">🔊</button>
+    </div>
+  </header>
+
+  <main class="game-main">
+    <section class="stage " id="stage" style="--stage-w:420px;--ar:0.667;--g1:#38bdf8;--g2:#22d3ee">
+    <canvas id="game" width="400" height="600" aria-label="Flappy game"></canvas>
+    <div class="veil" id="overlay">
+      <div class="veil-card">
+        <div class="veil-icon" id="ovIcon">🐤</div>
+        <h2 id="ovTitle">Flappy</h2>
+        <p id="ovText">Tap anywhere or press <b>Space</b> to flap.<br>Thread the pipes. Simple. Right?</p>
+        <button class="btn primary" id="ovBtn">Play</button>
+      </div>
+    </div>
+    </section>
+
+    <div class="hud">
+      <div class="hud-chip">Score <b id="score">0</b></div>
+      <div class="hud-chip">Best <b id="best" data-best="flappy">0</b></div>
+      <button class="hud-chip" id="pauseBtn">⏸ Pause</button>
+    </div>
+
+    <p class="hint">Tap the board, click, or press <kbd>Space</kbd> to flap. <kbd>P</kbd> pauses.</p>
+  </main>
+
+  <script src="../js/common.js"></script>
+  <script src="../js/games/flappy.js"></script>
+</body>
+</html>
